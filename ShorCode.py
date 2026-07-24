@@ -158,6 +158,8 @@ class ShorCode:
         qc.cx(3, 4);  qc.cx(3, 5)   # block 1
         qc.cx(6, 7);  qc.cx(6, 8)   # block 2
 
+        qc.barrier()
+
         return qc
 
     def decoding_circuit(self) -> QuantumCircuit:
@@ -227,6 +229,9 @@ class ShorCode:
             qc.z(qubit)
         else:
             getattr(qc, error_type.lower())(qubit)
+
+        qc.barrier()
+        
         return qc
 
     # SYNDROME MEASUREMENT
